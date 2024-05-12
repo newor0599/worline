@@ -3,10 +3,18 @@ from os import system
 system("clear")
 
 ###### Settings ########
-showDebug = True
+showDebug = False
 showOutputReg = True
+clock_speed = 0.1
 ########################
 
+#-- Manual value set --#
+ram_pointer = 0
+program_counter = 0
+reg_a = ""
+reg_b = ""
+negative = 0
+carry_out = 0
 ram = [
         "01011110",
         "01000001",
@@ -18,24 +26,19 @@ ram = [
         "11010011",
         "11110000",
         ]
+########################
+
 print(" ",len(ram))
 if len(ram) > 16:
     print("RAM OVERLOAD")
     print("HALT")
     quit()
+input("Press enter to start")
+system("clear")
 
 if len(ram) < 16:
     for i in range(16-len(ram)):
         ram.append('00000000')
-
-
-ram_pointer = 0
-program_counter = 0
-reg_a = ""
-reg_b = ""
-negative = 0
-carry_out = 0
-clock_speed = 0.5
 
 def data_ram(position,data):
     ram[position] = "2222" + str(data)
