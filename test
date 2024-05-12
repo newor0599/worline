@@ -1,0 +1,9 @@
+wrp 1110
+wrr 0001
+wra 0000
+wrp 1111
+wrb 1111
+add 1111
+wro 1111
+jmp 0011
+hlt 0000
