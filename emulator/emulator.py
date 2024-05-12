@@ -8,7 +8,7 @@ showOutputReg = True
 clock_speed = 0.1
 ########################
 
-#-- Manual value set --#
+#-------- Value --------#
 ram_pointer = 0
 program_counter = 0
 reg_a = ""
@@ -26,7 +26,7 @@ ram = [
         "11010011",
         "11110000",
         ]
-########################
+#---------------------#
 
 print(" ",len(ram))
 if len(ram) > 16:
