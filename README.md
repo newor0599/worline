@@ -5,7 +5,7 @@ This is emulator help me run code that will be running on my digital logic simul
 (Digital logic simulator by [GGBRW](https://github.com/GGBRW/BOOLR))
 
 ## Operation code
-| OP CODE | Args       | NAME | SHORT DESC         | DESC
+| OP CODE | Args       | NAME | ICON DESC          | DESC
 | ------- | ---------- | ---- | ------------------ | --------------------------|
 | 0000    | Output loc | ADD  | 󰬈 +󰬉 ->           | Reg A + B to Ram          |
 | 0001    | Output loc | SUB  | 󰬈 -󰬉 ->           | Reg A - B to Ram          |
