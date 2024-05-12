@@ -1,6 +1,12 @@
 from time import sleep
 from os import system
 system("clear")
+
+###### Settings ########
+showDebug = True
+showOutputReg = True
+########################
+
 ram = [
         "01011110",
         "01000001",
@@ -54,7 +60,8 @@ while code != "1111" and program_counter != 16:
     arg = ram[program_counter][4:]
     match code:
         case "0000":
-            print("  ->  ",int(arg,2))
+            if showDebug:
+                print("  ->  ",int(arg,2))
             alu_out = binary_add(reg_a,reg_b)
             if len(alu_out) > 5:
                 carry_out = 1
@@ -63,7 +70,8 @@ while code != "1111" and program_counter != 16:
             data_ram(int(arg,2),alu_out[-4:])
 
         case "0001":
-            print(f"  ->  ",int(arg,2))
+            if showDebug:
+                print(f"  ->  ",int(arg,2))
             reg_b_invert = ""
             for i in reg_b:
                 reg_b_invert += str(int(i)^1)
@@ -76,30 +84,37 @@ while code != "1111" and program_counter != 16:
 
         case "0010":
             reg_a = str(ram[ram_pointer])[4:]
-            print(int(str(ram[ram_pointer])[4:],2),"-> 󰬈 ")
+            if showDebug:
+                print(int(str(ram[ram_pointer])[4:],2),"-> 󰬈 ")
 
         case "0011":
             reg_b = str(ram[ram_pointer])[4:]
-            print(int(str(ram[ram_pointer])[4:],2),"-> 󰬉")
+            if showDebug:
+                print(int(str(ram[ram_pointer])[4:],2),"-> 󰬉")
 
         case "0100":
-            print(int(arg,2),"->  ",ram_pointer)
+            if showDebug:
+                print(int(arg,2),"->  ",ram_pointer)
             data_ram(ram_pointer,arg)
 
         case "0101":
-            print("󰕟 ",int(arg,2))
+            if showDebug:
+                print("󰕟 ",int(arg,2))
             ram_pointer = int(arg,2)
 
         case "0110":
-            print("󰌖 ",ram[int(arg,2)][4:])
+            if showOutputReg:
+                print("󰌖 ",ram[int(arg,2)][4:])
 
         case "1101":
-            print("Write counter")
+            if showDebug:
+                print("Write counter")
             program_counter = int(str(int(arg)-1),2)
 
         case "1110":
             if negative:
-                print("Write counter on negative")
+                if showDebug:
+                    print("Write counter on negative")
                 counter = (int(str(int(arg)-1),2))
 
     sleep(clock_speed)

@@ -25,6 +25,6 @@ This is emulator help me run code that will be running on my digital logic simul
 | 1111    | NONE       | HLT  |                   | STOP ALL                  |
 
 ## TODO
-- [ ] Emulator compiler
+- [x] Emulator compiler
 - [ ] Better output
 - [ ] Clean up code
