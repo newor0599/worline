@@ -35,9 +35,10 @@ with open(filePath,'r') as f:
 lexer = []
 value = []
 for l in user_code:
-    l = l.split(" ")
-    lexer.append(l[0])
-    value.append(l[1].strip())
+    if not l.find("--") > -1:
+        l = l.split(" ")
+        lexer.append(l[0])
+        value.append(l[1].strip())
 
 compiled = ""
 
