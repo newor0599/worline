@@ -5,7 +5,7 @@ system("clear")
 ###### Settings ########
 showDebug = False
 showOutputReg = True
-clock_speed = 0.1
+clock_speed = 4
 start_immediately = True
 ignore_ram_overflow = False
 ########################
@@ -18,18 +18,15 @@ reg_b = ""
 negative = 0
 carry_out = 0
 ram = [
-        "01011110",
-        "01000001",
-        "00100000",
-        "01011111",
+        "01110001",
         "00111111",
         "00001111",
         "01101111",
-        "11010011",
-        "11110000",
+        "11010001",
         ]
 #---------------------#
 
+clock_speed = 60/clock_speed/60
 if not start_immediately:
     print(" ",len(ram))
     if len(ram) > 16:
@@ -89,14 +86,14 @@ while code != "1111" and program_counter != 16:
             data_ram(str(int(arg,2)),alu_out[-4:])
 
         case "0010":
-            reg_a = str(ram[ram_pointer])[4:]
+            reg_a = str(ram[int(arg,2)])[4:]
             if showDebug:
-                print(int(str(ram[ram_pointer])[4:],2),"-> 󰬈 ")
+                print(int(str(ram[int(arg,2)])[4:],2),"-> 󰬈 ")
 
         case "0011":
-            reg_b = str(ram[ram_pointer])[4:]
+            reg_b = str(ram[int(arg,2)])[4:]
             if showDebug:
-                print(int(str(ram[ram_pointer])[4:],2),"-> 󰬉")
+                print(int(str(ram[int(arg,2)])[4:],2),"-> 󰬉")
 
         case "0100":
             if showDebug:
@@ -111,6 +108,16 @@ while code != "1111" and program_counter != 16:
         case "0110":
             if showOutputReg:
                 print("󰌖 ",ram[int(arg,2)][4:])
+
+        case "0111":
+            reg_a = arg
+            if showDebug:
+                print(int(arg,2),"-> 󰬈 ")
+
+        case "1000":
+            reg_b = arg
+            if showDebug:
+                print(int(arg,2),"-> 󰬉 ")
 
         case "1101":
             if showDebug:

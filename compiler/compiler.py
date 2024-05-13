@@ -6,11 +6,13 @@ import sys
 op_code = {
         "add":"0000",
         "sub":"0001",
-        "wra":"0010",
-        "wrb":"0011",
+        "rta":"0010",
+        "rtb":"0011",
         "wrr":"0100",
         "wrp":"0101",
         "wro":"0110",
+        "wra":"0111",
+        "wrb":"1000",
         "jmp":"1101",
         "jon":"1110",
         "hlt":"1111",
@@ -35,10 +37,10 @@ with open(filePath,'r') as f:
 lexer = []
 value = []
 for l in user_code:
-    if not l.find("--") > -1:
-        l = l.split(" ")
+    if l.find("--") == -1 and l.strip() != "":
+        l = l.strip().split(" ")
         lexer.append(l[0])
-        value.append(l[1].strip())
+        value.append(l[1])
 
 compiled = ""
 

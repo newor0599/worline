@@ -7,15 +7,15 @@ This is emulator help me run code that will be running on my digital logic simul
 ## Operation code
 | OP CODE | Args       | NAME | ICON DESC          | DESC
 | ------- | ---------- | ---- | ------------------ | --------------------------|
-| 0000    | Output loc | ADD  | 󰬈 +󰬉 ->           | Reg A + B to Ram          |
-| 0001    | Output loc | SUB  | 󰬈 -󰬉 ->           | Reg A - B to Ram          |
-| 0010    | NONE       | WRA  |  -> 󰬈             | Ram to Reg A              |
-| 0011    | NONE       | WRB  |  -> 󰬉             | Ram to Reg B              |
-| 0100    | Const      | WRR  |  ->              | Const to Ram              |
-| 0101    | Const      | WRP  |  -> 󰕟             | Const to ram pointer      |
-| 0110    | Ram loc    | WRO  |  ->              | Write output reg          |
-| 0111    |            |      |                    |                           |
-| 1000    |            |      |                    |                           |
+| 0000    | Output loc | ADD  | 󰬈 +󰬉  ->          | Reg A + B to Ram          |
+| 0001    | Output loc | SUB  | 󰬈 -󰬉  ->          | Reg A - B to Ram          |
+| 0010    | Ram Loc       | RTA  |   -> 󰬈             | Ram to Reg A              |
+| 0011    | Ram loc     | RTB  |   -> 󰬉             | Ram to Reg B              |
+| 0100    | Const      | WRR  |   ->              | Const to Ram              |
+| 0101    | Const      | WRP  |   -> 󰕟             | Const to ram pointer      |
+| 0110    | Ram loc    | WRO  |   ->              | Write output reg          |
+| 0111    | Const      | WRA  |   ->  󰬈            | Write const to reg A      |
+| 1000    | Const      | WRB  |   ->  󰬉            | Write const to reg B     |
 | 1001    |            |      |                    |                           |
 | 1010    |            |      |                    |                           |
 | 1011    |            |      |                    |                           |
