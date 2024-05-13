@@ -6,6 +6,8 @@ system("clear")
 showDebug = False
 showOutputReg = True
 clock_speed = 0.1
+start_immediately = True
+ignore_ram_overflow = False
 ########################
 
 #-------- Value --------#
@@ -28,15 +30,16 @@ ram = [
         ]
 #---------------------#
 
-print(" ",len(ram))
-if len(ram) > 16:
-    print("RAM OVERLOAD")
-    print("HALT")
-    quit()
-input("Press enter to start")
+if not start_immediately:
+    print(" ",len(ram))
+    if len(ram) > 16:
+        print("RAM OVERLOAD")
+        print("HALT")
+        quit()
+    input("Press enter to start")
 system("clear")
 
-if len(ram) < 16:
+if len(ram) < 16 and not ignore_ram_overflow:
     for i in range(16-len(ram)):
         ram.append('00000000')
 
@@ -122,4 +125,7 @@ while code != "1111" and program_counter != 16:
 
     sleep(clock_speed)
     program_counter += 1
-print(" ")
+if showDebug:
+    print(" ")
+
+print("Program ended")
