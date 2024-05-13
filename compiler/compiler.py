@@ -17,13 +17,17 @@ op_code = {
         }
 
 def getArg():
-    if len(sys.argv) > 1:
-        arg = sys.argv[1]
-    else:
-        arg = None
-    return str(arg)
+    # if len(sys.argv) > 1:
+    #     arg = sys.argv[1]
+    # else:
+    #     arg = None
+    return sys.argv
 
-filePath = getArg()
+filePath = getArg()[1]
+try:
+    output = getArg()[2]
+except:
+    output = "raw"
 
 with open(filePath,'r') as f:
     user_code = f.readlines()
@@ -38,7 +42,12 @@ for l in user_code:
 compiled = ""
 
 for i,l in enumerate(lexer):
-    compiled += f'{op_code[l]}{value[i]}\n'
+    raw = f'{op_code[l]}{value[i]}'
+    match output:
+        case "raw":
+            compiled += f'{raw}\n'
+        case "emu":
+            compiled += f"\"{raw}\",\n"
 
 with open(f"{filePath}.compiled",'w') as f:
     f.write(compiled)
